@@ -1,35 +1,15 @@
-import React, { useEffect } from "react";
-
-import { useAppDispatch, useAppSelector } from "./hooks";
-import {
-  fetchProducts,
-  selectProductsState,
-} from "./store/slices/productsSlice";
+import { Box, Paper } from "@mui/material";
+import InputComponent from "./components/Input";
+import TableBox from "./components/Table";
 
 const App = () => {
-  const dispatch = useAppDispatch();
-  const { loading, items } = useAppSelector(selectProductsState);
-
-  useEffect(() => {
-    dispatch(fetchProducts());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-  console.log(items);
-
-  if (loading) {
-    return <h1>Loading...</h1>;
-  }
-
   return (
-    <div>
-      {items.map((item) => (
-        <div key={item.id}>
-          <div>{item.id}</div>
-          <div>{item.name}</div>
-          <div>{item.year}</div>
-        </div>
-      ))}
-    </div>
+    <Paper sx={{ maxWidth: "70vw", p: 3, m: "auto" }}>
+      <Box display="flex" flexDirection="column" gap={3} alignItems="center">
+        <InputComponent />
+        <TableBox />
+      </Box>
+    </Paper>
   );
 };
 

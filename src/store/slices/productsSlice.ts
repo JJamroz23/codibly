@@ -12,15 +12,16 @@ export const fetchProducts = createAsyncThunk(
   }
 );
 
-interface Item {
+export interface Product {
   id: number;
   name: string;
   year: number;
   color: string;
+  pantone_value: string;
 }
 
 interface InitialProductsState {
-  items: Item[];
+  items: Product[];
   error: string | null | undefined;
   loading: boolean;
 }
