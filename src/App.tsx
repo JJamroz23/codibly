@@ -1,26 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from "react";
 
-function App() {
+import { useAppDispatch, useAppSelector } from "./hooks";
+import {
+  fetchProducts,
+  selectProductsState,
+} from "./store/slices/productsSlice";
+
+const App = () => {
+  const dispatch = useAppDispatch();
+  const { loading, items } = useAppSelector(selectProductsState);
+
+  useEffect(() => {
+    dispatch(fetchProducts());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  console.log(items);
+
+  if (loading) {
+    return <h1>Loading...</h1>;
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {items.map((item) => (
+        <div key={item.id}>
+          <div>{item.id}</div>
+          <div>{item.name}</div>
+          <div>{item.year}</div>
+        </div>
+      ))}
     </div>
   );
-}
+};
 
 export default App;
