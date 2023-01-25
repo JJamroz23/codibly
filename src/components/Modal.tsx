@@ -25,7 +25,12 @@ const ProductModal = ({ closeModal, item }: ProductModalProps) => {
         <DialogTitle textAlign="center">
           <b>{item.name}</b>
         </DialogTitle>
-        <DialogContent sx={{ textAlign: "center" }}>
+        <DialogContent
+          sx={{
+            textAlign: { sm: "center", xs: "left" },
+            maxWidth: { xs: "70vw" },
+          }}
+        >
           <Grid container spacing={2} p={2}>
             <Grid item xs={12} sm={6} md={4}>
               <Typography component="span">
@@ -59,6 +64,7 @@ const ProductModal = ({ closeModal, item }: ProductModalProps) => {
             data-testid="product-modal-close-btn"
             onClick={closeModal}
             variant="contained"
+            sx={{ margin: 2 }}
           >
             close
           </Button>

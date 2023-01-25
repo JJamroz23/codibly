@@ -82,14 +82,23 @@ const ProductsTable = () => {
                   onClick={() => setSelectedItem(item)}
                   sx={{
                     "&:last-child td, &:last-child th": { border: 0 },
+
                     background: `${item.color}`,
                   }}
                 >
-                  <TableCell component="th" scope="row">
+                  <TableCell
+                    component="th"
+                    scope="row"
+                    sx={{ borderBottom: 0 }}
+                  >
                     {item.id}
                   </TableCell>
-                  <TableCell align="right">{item.name}</TableCell>
-                  <TableCell align="right">{item.year}</TableCell>
+                  <TableCell align="right" sx={{ borderBottom: 0 }}>
+                    {item.name}
+                  </TableCell>
+                  <TableCell align="right" sx={{ borderBottom: 0 }}>
+                    {item.year}
+                  </TableCell>
                 </TableRow>
               ))
             )}

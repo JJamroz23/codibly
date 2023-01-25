@@ -4,7 +4,17 @@ import ProductsTable from "./components/Table";
 
 const App = () => {
   return (
-    <Paper sx={{ maxWidth: "70vw", p: 3, m: "auto" }}>
+    <Paper
+      sx={{
+        maxWidth: {
+          xs: "100vw",
+          sm: "70vw",
+          lg: "50vw",
+        },
+        p: 3,
+        m: "auto",
+      }}
+    >
       <Box display="flex" flexDirection="column" gap={3} alignItems="center">
         <SearchInput />
         <ProductsTable />
