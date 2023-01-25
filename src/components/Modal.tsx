@@ -16,7 +16,7 @@ const ProductModal = ({ closeModal, item }: ProductModalProps) => {
   if (!item) return null;
 
   return (
-    <Box>
+    <Box data-testid="product-modal">
       <Dialog
         open
         aria-labelledby="modal-modal-title"
@@ -55,7 +55,11 @@ const ProductModal = ({ closeModal, item }: ProductModalProps) => {
           </Grid>
         </DialogContent>
         <DialogActions>
-          <Button onClick={closeModal} variant="contained">
+          <Button
+            data-testid="product-modal-close-btn"
+            onClick={closeModal}
+            variant="contained"
+          >
             close
           </Button>
         </DialogActions>

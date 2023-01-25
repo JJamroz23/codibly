@@ -21,7 +21,7 @@ import {
 import Loader from "./Loader";
 import ProductModal from "./Modal";
 
-const TableBox = () => {
+const ProductsTable = () => {
   const dispatch = useAppDispatch();
   const { loading, items, total, searchId, page, perPage, error } =
     useAppSelector(selectProductsState);
@@ -48,6 +48,7 @@ const TableBox = () => {
   return (
     <>
       <TableContainer
+        data-testid="products-table"
         sx={{
           border: "1px solid",
           borderRadius: "5px",
@@ -76,6 +77,7 @@ const TableBox = () => {
             ) : (
               items.map((item) => (
                 <TableRow
+                  data-testid="products-table-row"
                   key={item.id}
                   onClick={() => setSelectedItem(item)}
                   sx={{
@@ -107,4 +109,4 @@ const TableBox = () => {
   );
 };
 
-export default TableBox;
+export default ProductsTable;

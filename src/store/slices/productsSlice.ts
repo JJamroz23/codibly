@@ -27,9 +27,9 @@ interface FetchProductsResponse {
   total: number;
 }
 
-const PRODUCTS_URL = "https://reqres.in/api/products";
+export const PRODUCTS_URL = "https://reqres.in/api/products";
 
-const getQueryParams = (state: ProductsState) => {
+export const getQueryParams = (state: ProductsState) => {
   const params = new URLSearchParams();
   params.append("per_page", String(state.perPage));
   params.append("page", String(state.page));
@@ -65,8 +65,7 @@ export const fetchProducts = createAsyncThunk<
   }
 });
 
-const getInitialValuesFromUrl = () => {
-  const { search, pathname } = window.location;
+export const getInitialValuesFromUrl = (pathname: string, search: string) => {
   const params = new URLSearchParams(search);
 
   if (pathname !== "/") {
@@ -89,7 +88,7 @@ const initialState: ProductsState = {
   error: null,
   loading: false,
   total: 0,
-  ...getInitialValuesFromUrl(),
+  ...getInitialValuesFromUrl(window.location.pathname, window.location.search),
 };
 
 export const productsSlice = createSlice({
@@ -105,6 +104,7 @@ export const productsSlice = createSlice({
   },
   extraReducers(builder) {
     builder.addCase(fetchProducts.fulfilled, (state, action) => {
+      console.log(action.payload);
       state.items = action.payload.data;
       state.total = action.payload.total_pages;
       state.loading = false;
