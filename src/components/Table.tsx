@@ -72,7 +72,7 @@ const ProductsTable = () => {
           <TableBody>
             {!items.length ? (
               <TableRow>
-                <TableCell>No products found</TableCell>
+                <TableCell colSpan={3}>No products found</TableCell>
               </TableRow>
             ) : (
               items.map((item) => (

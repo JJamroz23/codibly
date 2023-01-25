@@ -11,9 +11,9 @@ describe("productsSlice", () => {
     searchId: 10,
   };
 
-  describe("getInitialValuesFromUrl(pathname, string)", () => {
+  describe("getInitialValuesFromUrl(pathname, search)", () => {
     const search = `?perPage=${data.perPage}&page=${data.page}&searchId=${data.searchId}`;
-    describe('window.location.pathanme does not equal "/"', () => {
+    describe('pathanme does not equal "/"', () => {
       it(`should return object containing 
       page set to 1, searchId set to 0, perPage set to 5`, () => {
         expect(getInitialValuesFromUrl("/abcd", search)).toEqual({
@@ -23,11 +23,11 @@ describe("productsSlice", () => {
         });
       });
     });
-    describe('window.location.pathanme is equal "/"', () => {
+    describe('pathanme is equal "/"', () => {
       it(`should return object containing 
-      page set to page from window.location.search, 
-      searchId set to searchId from window.location.search,
-      perPage set to perPage window.location.search`, () => {
+      page set to page from search string, 
+      searchId set to searchId from search string,
+      perPage set to perPage search string`, () => {
         expect(getInitialValuesFromUrl("/", search)).toEqual(data);
       });
     });
@@ -41,7 +41,7 @@ describe("productsSlice", () => {
       });
     });
     describe("state.searchId is truthy", () => {
-      it("should return string containing per_page and page params", () => {
+      it("should return string containing per_page, page and id params", () => {
         expect(getQueryParams(data as ProductsState)).toBe(
           `?per_page=${data.perPage}&page=${data.page}&id=${data.searchId}`
         );
