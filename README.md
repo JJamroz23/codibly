@@ -1,4 +1,4 @@
-#Codibly application
+# Codibly application:
 
 Application is hosted on Netlify: https://jjamroz23-codibly.netlify.app/
 
